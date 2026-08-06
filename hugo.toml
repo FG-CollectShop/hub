@@ -1,0 +1,9 @@
+baseURL = "https://phil-win.github.io/hub/"
+languageCode = "en-us"
+title = "FG-CollectShop — Hub"
+theme = ""
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
