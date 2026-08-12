@@ -227,13 +227,50 @@
             </td>
           </tr>
           <tr>
-            <td class="label"><a href="https://api.futuregadgetlabs.com/healthz" target="_blank" rel="noopener">API Health</a></td>
+            <td class="label"><a href="https://api.futuregadgetlabs.com/healthz" target="_blank" rel="noopener">API</a></td>
             <td class="url">api.futuregadgetlabs.com/healthz</td>
             <td class="badge">
               <a href="https://api.futuregadgetlabs.com/healthz" target="_blank" rel="noopener">
                 <img src="https://img.shields.io/website?url=https%3A%2F%2Fapi.futuregadgetlabs.com%2Fhealthz&label=api&style=flat-square&color=3fb950&down_color=f85149" alt="api health status" />
               </a>
             </td>
+          </tr>
+          <tr>
+            <td class="label">Price Scout <span style="font-size:10px;color:var(--text-muted);font-weight:400;">internal</span></td>
+            <td class="url">192.168.86.228:8090/health &nbsp;·&nbsp; pricesync cron: 1h</td>
+            <td class="badge">
+              <a href="https://github.com/FG-CollectShop/fg-price-scout/actions" target="_blank" rel="noopener">
+                <img src="https://img.shields.io/github/actions/workflow/status/FG-CollectShop/fg-price-scout/build.yml?branch=main&label=build&style=flat-square" alt="price scout build" />
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── Background Workers ── -->
+  <section>
+    <h2>Background Workers</h2>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Worker</th>
+            <th>Schedule</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">pricesync</td>
+            <td class="url" style="width:80px;">every 1h</td>
+            <td class="desc">Finds manifest purchases with a stale or missing market price (&gt;7 days), calls fg-price-scout per TCGPlayer product ID, writes result back to <code style="font-size:11px;color:var(--text-muted);">purchases.market_price_cents</code>. Runs inside fg-collect-core api on startup.</td>
+          </tr>
+          <tr>
+            <td class="label">catalog sync</td>
+            <td class="url" style="width:80px;">every 15m</td>
+            <td class="desc">Workers binary pulls TCGPlayer catalog data into Postgres and exports a GCS snapshot for the storefront.</td>
           </tr>
         </tbody>
       </table>
@@ -267,6 +304,10 @@
           <tr>
             <td class="repo-name"><a href="https://github.com/FG-CollectShop/fg-collect-infra" target="_blank" rel="noopener">fg-collect-infra</a></td>
             <td class="desc">Terraform + Docker Compose infra</td>
+          </tr>
+          <tr>
+            <td class="repo-name"><a href="https://github.com/FG-CollectShop/fg-price-scout" target="_blank" rel="noopener">fg-price-scout</a></td>
+            <td class="desc">TCGPlayer price scraper microservice (curl_cffi + SQLite cache)</td>
           </tr>
         </tbody>
       </table>
